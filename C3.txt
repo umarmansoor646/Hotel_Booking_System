@@ -1,0 +1,14 @@
+C3
+
+To deploy your combined Spring Boot and Angular application to the cloud, you can use a cloud service provider like AWS, Google Cloud Platform (GCP), or Azure. 
+Here's a brief example using AWS:
+
+To deploy our multithreaded application to AWS:
+
+First we need to Create an AWS Account.
+Secondly, we need to
+Set Up ECR (Elastic Container Registry): Create a repository in ECR to store Docker images and push built Docker image to this repository.
+lastly, we need to
+Set Up ECS (Elastic Container Service): Create an ECS cluster and define a task definition that uses our Docker image from ECR. Then, create a service based on this task definition to run our application in containers.
+
+This setup allows our application to be easily managed and scaled in the cloud.
