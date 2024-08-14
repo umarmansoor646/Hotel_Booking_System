@@ -17,9 +17,6 @@ export class AppComponent implements OnInit{
 
   // B1b
   welcomeMessageEnglish$!: Observable<string>
-  welcomeMessageFrench$!: Observable<string>
-  // B3
-  announcePresentation$!: Observable<string>
 
   constructor(private httpClient:HttpClient){}
 
@@ -37,9 +34,7 @@ export class AppComponent implements OnInit{
     ngOnInit(){
       // B1b
       this.welcomeMessageEnglish$ = this.httpClient.get(this.baseURL + '/welcome?lang=en-CA', {responseType: 'text'} )
-      this.welcomeMessageFrench$ = this.httpClient.get(this.baseURL + '/welcome?lang=fr-CA', {responseType: 'text'} )
-      // B3
-      this.announcePresentation$ = this.httpClient.get(this.baseURL + '/presentation', {responseType: 'text'} )
+
       this.roomsearch= new FormGroup({
         checkin: new FormControl(' '),
         checkout: new FormControl(' ')
@@ -61,8 +56,6 @@ export class AppComponent implements OnInit{
       this.getAll().subscribe(
 
         rooms => {console.log(Object.values(rooms)[0]);this.rooms=<Room[]>Object.values(rooms)[0];
-      // B2
-      this.rooms.forEach( room => { room.priceCAD = room.price; room.priceEUR = room.price})
         }
       );
     }
@@ -111,9 +104,6 @@ export interface Room{
   id:string;
   roomNumber:string;
   price:string;
-  // B2
-  priceCAD:string;
-  priceEUR:string;
   links:string;
 
 }
